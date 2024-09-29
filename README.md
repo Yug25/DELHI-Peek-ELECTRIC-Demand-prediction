@@ -1,6 +1,6 @@
 
 
-# Delhi Peak Power Demand Analysis and Prediction
+# Delhi Peak ELECTRIC Power Demand Analysis and Prediction
 
 This repository contains a comprehensive project focused on analyzing and predicting peak power demand in Delhi. It consists of three key components: the dataset, data analysis, and a machine learning model for power demand prediction. Each notebook includes an integrated report with code explanations and findings.
 
