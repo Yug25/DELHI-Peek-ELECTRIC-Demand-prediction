@@ -69,11 +69,11 @@ To run the notebooks locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Yug25/DELHI-Peek-ELECTRIC-power-Demand-prediction/tree/main
+    git clone https://github.com/Yug25/DELHI-Peek-ELECTRIC-Demand-prediction/tree/main
     ```
 2. Navigate to the project directory:
     ```bash
-    cd DELHI-Peek-ELECTRIC-power-Demand-prediction
+    cd DELHI-Peek-ELECTRIC-Demand-prediction
     ```
 3. Install the necessary dependencies using `pip`:
     ```bash
