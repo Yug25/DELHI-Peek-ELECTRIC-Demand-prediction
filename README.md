@@ -69,7 +69,7 @@ To run the notebooks locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Yug25/DELHI-peek-power-DEmand-prediction/tree/main
+    git clone https://github.com/Yug25/DELHI-Peek-ELECTRIC-power-Demand-prediction/tree/main
     ```
 2. Navigate to the project directory:
     ```bash
