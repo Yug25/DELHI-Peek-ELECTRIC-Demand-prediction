@@ -73,7 +73,7 @@ To run the notebooks locally, follow these steps:
     ```
 2. Navigate to the project directory:
     ```bash
-    cd DELHI-peek-power-DEmand-prediction
+    cd DELHI-Peek-ELECTRIC-power-Demand-prediction
     ```
 3. Install the necessary dependencies using `pip`:
     ```bash
