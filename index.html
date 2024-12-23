@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Demand Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            font-size: 24px;
+        }
+        main {
+            padding: 20px;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Power Demand Prediction
+    </header>
+    <main>
+        <div class="form-group">
+            <label for="date">Enter a date (YYYY-MM-DD):</label><br>
+            <input type="date" id="date" />
+        </div>
+        <button onclick="getPrediction()">Get Prediction</button>
+        <div class="result" id="result"></div>
+    </main>
+    <script>
+        async function getPrediction() {
+            const dateInput = document.getElementById('date').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!dateInput) {
+                resultDiv.textContent = "Please select a date.";
+                resultDiv.classList.add("error");
+                return;
+            }
+
+            const apiUrl = `http://127.0.0.1:5000/predict?date=${dateInput}`;
+            resultDiv.textContent = "Fetching prediction...";
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+                const data = await response.json();
+
+                if (data.error) {
+                    resultDiv.textContent = `Error: ${data.error}`;
+                    resultDiv.classList.add("error");
+                } else {
+                    resultDiv.textContent = `
+                        Date: ${data.date} \n
+                        Predicted Power Demand: ${data.predicted_power_demand.toFixed(2)} ${
+                            data.actual_power_demand ? `<br>Actual Power Demand: ${data.actual_power_demand.toFixed(2)}` : ""
+                        }
+                    `;
+                    resultDiv.classList.remove("error");
+                }
+            } catch (error) {
+                resultDiv.textContent = `An error occurred: ${error.message}`;
+                resultDiv.classList.add("error");
+            }
+        }
+    </script>
+</body>
+</html>
